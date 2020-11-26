@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.moodboardapp.sym_labo2">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-
     <application
         android:hardwareAccelerated="true"
         android:allowBackup="true"
