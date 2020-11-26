@@ -28,7 +28,7 @@
         app:layout_constraintRight_toRightOf="parent"/>
 
     <TextView
-        android:id="@+id/res_BarCode"
+        android:id="@+id/res_title_BarCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/button_BarCode"
@@ -36,4 +36,11 @@
         android:textStyle="bold"
         android:textSize="20sp"
         android:fontFamily="monospace"/>
+
+    <ImageView
+        android:id="@+id/res_image_barCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/res_title_BarCode"
+        android:contentDescription="@string/img_1_description" />
 </androidx.constraintlayout.widget.ConstraintLayout>
