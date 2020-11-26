@@ -9,7 +9,7 @@
     android:padding="20dp">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/title_barCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -18,11 +18,21 @@
         android:textSize="40sp"
         android:fontFamily="monospace"/>
 
+    <Button
+        android:id="@+id/button_BarCode"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/button_1"
+        app:layout_constraintTop_toBottomOf="@+id/title_barCode"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
     <TextView
+        android:id="@+id/res_BarCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/title"
-        android:text="@string/activity_1_title"
+        app:layout_constraintTop_toBottomOf="@id/button_BarCode"
+        android:text="@string/result"
         android:textStyle="bold"
         android:textSize="20sp"
         android:fontFamily="monospace"/>

@@ -2,19 +2,28 @@ package com.moodboardapp.sym_labo2
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.zxing.integration.android.IntentIntegrator
 
 
 class Activity1 : AppCompatActivity() {
-    /* Code-barres */
+
+    private lateinit var scanButton: Button
+    private lateinit var scanResult: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_1)
 
-        IntentIntegrator(this).initiateScan()
+        scanButton = findViewById(R.id.button_BarCode)
+        scanResult = findViewById(R.id.res_BarCode)
+
+        scanButton.setOnClickListener{
+            IntentIntegrator(this).initiateScan()
+        }
     }
 
     // Get the results:
