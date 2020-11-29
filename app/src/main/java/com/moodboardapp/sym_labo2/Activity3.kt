@@ -8,7 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 
 class Activity3 : AppCompatActivity() {
-    /* NFC */
+    /* NFC login */
     private lateinit var usernameInput: EditText
     private lateinit var passwordInput: EditText
     private lateinit var connectButton: Button
@@ -37,7 +37,6 @@ class Activity3 : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-
     }
 
     companion object {

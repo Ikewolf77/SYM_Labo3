@@ -10,10 +10,26 @@ import android.widget.EditText
 class NFCActivity : AppCompatActivity() {
     /* NFC */
 
+    private lateinit var highSecurityButton: Button
+    private lateinit var mediumSecurityButton: Button
+    private lateinit var lowSecurityButton: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_3)
 
+        highSecurityButton = findViewById(R.id.high_security)
+        mediumSecurityButton = findViewById(R.id.medium_security)
+        lowSecurityButton = findViewById(R.id.low_security)
 
+        highSecurityButton.setOnClickListener {
+            // todo
+        }
+        mediumSecurityButton.setOnClickListener {
+            // todo
+        }
+        lowSecurityButton.setOnClickListener {
+            // todo
+        }
     }
 }

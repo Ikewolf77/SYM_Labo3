@@ -10,6 +10,8 @@
     <string name="nfc_username">Username</string>
     <string name="nfc_password">Password</string>
     <string name="nfc_connect">Connect</string>
-
+    <string name="nfc_high">High Security</string>
+    <string name="nfc_medium">Medium Security</string>
+    <string name="nfc_low">Low Security</string>
 
 </resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:weightSum="5"
+    android:padding="50dp">
+
+    <Button
+        android:id="@+id/high_security"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/highSecurity"
+        android:text="@string/nfc_high"/>
+    <Button
+        android:id="@+id/medium_security"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/mediumSecurity"
+        android:text="@string/nfc_medium"/>
+    <Button
+        android:id="@+id/low_security"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/lowSecurity"
+        android:text="@string/nfc_low"/>
+
+</LinearLayout>
