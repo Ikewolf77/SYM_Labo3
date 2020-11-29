@@ -6,4 +6,10 @@
     <string name="activity_1_title">Code-barres</string>
     <string name="activity_2_title">iBeacon</string>
     <string name="activity_3_title">NFC</string>
+
+    <string name="nfc_username">Username</string>
+    <string name="nfc_password">Password</string>
+    <string name="nfc_connect">Connect</string>
+
+
 </resources>
