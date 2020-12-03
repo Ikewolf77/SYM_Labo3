@@ -102,7 +102,6 @@ class NFCActivity : AppCompatActivity() {
         } catch (e: MalformedMimeTypeException) {
             throw RuntimeException("Check your mime type.")
         }
-
         adapter.enableForegroundDispatch(activity, pendingIntent, filters, techList)
     }
 
