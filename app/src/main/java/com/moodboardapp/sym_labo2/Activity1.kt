@@ -1,50 +1,83 @@
 package com.moodboardapp.sym_labo2
 
-import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
-import android.widget.Button
+import android.view.KeyEvent
+import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.zxing.integration.android.IntentIntegrator
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.ResultPoint
+import com.google.zxing.client.android.BeepManager
+import com.journeyapps.barcodescanner.*
+import java.util.*
 
 
 class Activity1 : AppCompatActivity() {
 
-    private lateinit var scanButton: Button
-    private lateinit var scanResultTitle: TextView
-    private lateinit var scanResultImage: ImageView
+    /* this is a code taken on the ZXING github open-source example:
+     https://tinyurl.com/yyk37waf */
+
+    private var barcodeView: DecoratedBarcodeView? = null
+    private var beepManager: BeepManager? = null
+    private var lastText: String? = null
+
+    private val callback: BarcodeCallback = object : BarcodeCallback {
+        override fun barcodeResult(result: BarcodeResult) {
+            if (result.text == null || result.text == lastText) {
+                // Prevent duplicate scans
+                return
+            }
+
+            lastText = result.text
+            barcodeView!!.setStatusText(result.text)
+            beepManager!!.playBeepSoundAndVibrate()
+
+            //Added preview of scanned barcode
+            val imageView = findViewById<ImageView>(R.id.barcodePreview)
+            imageView.setImageBitmap(result.getBitmapWithResultPoints(Color.YELLOW))
+        }
+
+        override fun possibleResultPoints(resultPoints: List<ResultPoint>) {}
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_1)
 
-        scanButton = findViewById(R.id.button_BarCode)
-        scanResultTitle = findViewById(R.id.res_title_BarCode)
-        scanResultImage = findViewById(R.id.res_image_barCode)
-
-        scanButton.setOnClickListener{
-            IntentIntegrator(this).initiateScan()
-        }
+        barcodeView = findViewById(R.id.barcode_scanner)
+        val formats: Collection<BarcodeFormat> = Arrays.asList(BarcodeFormat.QR_CODE, BarcodeFormat.CODE_39)
+        barcodeView!!.barcodeView.decoderFactory = DefaultDecoderFactory(formats)
+        barcodeView!!.initializeFromIntent(intent)
+        barcodeView!!.decodeContinuous(callback)
+        beepManager = BeepManager(this)
     }
 
-    // Get the results:
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-        if (result != null) {
-            if (result.contents == null) {
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
-            } else {
-
-                //set text
-                scanResultTitle.text = result.contents
-
-                //set image
-
-            }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data)
-        }
+    override fun onResume() {
+        super.onResume()
+        barcodeView!!.resume()
     }
+
+    override fun onPause() {
+        super.onPause()
+        barcodeView!!.pause()
+    }
+
+    fun pause(view: View?) {
+        barcodeView!!.pause()
+    }
+
+    fun resume(view: View?) {
+        barcodeView!!.resume()
+    }
+
+    fun triggerScan(view: View?) {
+        barcodeView!!.decodeSingle(callback)
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        return barcodeView!!.onKeyDown(keyCode, event) || super.onKeyDown(keyCode, event)
+    }
+
 }
