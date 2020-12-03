@@ -1,10 +1,9 @@
-package com.moodboardapp.sym_labo2
+package com.heigvd.sym_labo2
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
 

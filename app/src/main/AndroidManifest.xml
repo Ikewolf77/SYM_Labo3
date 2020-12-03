@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.moodboardapp.sym_labo2">
+    package="com.heigvd.sym_labo2">
+
+    <uses-permission android:name="android.permission.NFC" />
+
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
 
     <application
         android:hardwareAccelerated="true"
@@ -11,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:networkSecurityConfig="@xml/network_security_config">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.heigvd.sym_labo2.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,10 +25,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Activity1"/>
-        <activity android:name=".Activity2"/>
-        <activity android:name=".Activity3"/>
-        <activity android:name=".NFCActivity"/>
+        <activity android:name="com.heigvd.sym_labo2.Activity1"/>
+        <activity android:name="com.heigvd.sym_labo2.Activity2"/>
+        <activity android:name="com.heigvd.sym_labo2.Activity3"/>
+        <activity android:name="com.heigvd.sym_labo2.NFCActivity"/>
     </application>
 
 </manifest>

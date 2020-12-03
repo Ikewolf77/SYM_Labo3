@@ -9,6 +9,14 @@
     android:weightSum="5"
     android:padding="50dp">
 
+    <TextView
+        android:id="@+id/text_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NFC MSG : "
+        android:textSize="20dp"
+        android:fontFamily="monospace"/>
+
     <Button
         android:id="@+id/high_security"
         android:layout_width="match_parent"
