@@ -6,7 +6,11 @@
     <string name="activity_2_title">iBeacon</string>
     <string name="activity_3_title">NFC</string>
 
-    <string name="result">Result</string>
-    <string name="button_1">Click to scan</string>
-    <string name="img_1_description">Image result for bar code</string>
+    <string name="nfc_username">Username</string>
+    <string name="nfc_password">Password</string>
+    <string name="nfc_connect">Connect</string>
+    <string name="nfc_high">High Security</string>
+    <string name="nfc_medium">Medium Security</string>
+    <string name="nfc_low">Low Security</string>
+
 </resources>
