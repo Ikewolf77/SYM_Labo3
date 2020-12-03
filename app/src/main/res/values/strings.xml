@@ -3,7 +3,6 @@
     <string name="activity_1">Code-barres</string>
     <string name="activity_2">iBeacon</string>
     <string name="activity_3">NFC</string>
-    <string name="activity_1_title">Code-barres</string>
     <string name="activity_2_title">iBeacon</string>
     <string name="activity_3_title">NFC</string>
 
