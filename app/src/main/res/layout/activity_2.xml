@@ -19,12 +19,15 @@
         android:fontFamily="monospace"/>
 
     <TextView
+        android:id="@+id/somethingHappens"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/title"
+        android:layout_marginTop="72dp"
+        android:fontFamily="monospace"
         android:text="@string/activity_2_title"
-        android:textStyle="bold"
         android:textSize="20sp"
-        android:fontFamily="monospace"/>
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        tools:layout_editor_absoluteX="24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
