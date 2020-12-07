@@ -52,12 +52,44 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:fontFamily="monospace"/>
+            android:fontFamily="monospace"
+            android:inputType="textPassword"/>
         <Button
             android:id="@+id/connect_button"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="@string/nfc_connect"/>
+
+        <LinearLayout
+            android:id="@+id/buttonsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:layout_marginTop="50dp"
+            android:visibility="gone">
+            <Button
+                android:id="@+id/high_security"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@color/highSecurity"
+                android:text="@string/nfc_high"/>
+            <Button
+                android:id="@+id/medium_security"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@color/mediumSecurity"
+                android:text="@string/nfc_medium"/>
+            <Button
+                android:id="@+id/low_security"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@color/lowSecurity"
+                android:text="@string/nfc_low"/>
+        </LinearLayout>
     </LinearLayout>
 
 
