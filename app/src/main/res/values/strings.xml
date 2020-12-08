@@ -6,4 +6,5 @@
     <string name="activity_1_title">Code-barres</string>
     <string name="activity_2_title">iBeacon</string>
     <string name="activity_3_title">NFC</string>
+    <string name="back_to_activites">Retour vers les activités</string>
 </resources>

@@ -1,19 +1,22 @@
 package com.moodboardapp.sym_labo2
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.TextView
-import android.widget.Toast
+import android.os.RemoteException
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
+import com.moodboardapp.sym_labo2.beacon.AdapterBeacon
+import com.moodboardapp.sym_labo2.beacon.BeaconModel
 import org.altbeacon.beacon.*
 
 
 class Activity2 : AppCompatActivity(), BeaconConsumer {
     val TAG = "Activity2"
-    private val PERMISSION_REQUEST_FINE_LOCATION = 1
-    private val PERMISSION_REQUEST_BACKGROUND_LOCATION = 2
     private lateinit var beaconManager: BeaconManager
-    private lateinit var somethingHappens: TextView
+    private lateinit var listBeacons: ListView
+    private lateinit var btnBackActivities: Button
 
     /* iBeacon */
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,8 +25,15 @@ class Activity2 : AppCompatActivity(), BeaconConsumer {
         beaconManager = BeaconManager.getInstanceForApplication(this)
         beaconManager.beaconParsers.add(BeaconParser().setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"))
         beaconManager.bind(this)
-        somethingHappens = findViewById(R.id.somethingHappens)
 
+        listBeacons = findViewById(R.id.LIST_BEACONS)
+
+        btnBackActivities = findViewById(R.id.BACK_TO_ACTIVITES)
+
+        btnBackActivities.setOnClickListener({
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        })
     }
 
     override fun onDestroy() {
@@ -33,27 +43,33 @@ class Activity2 : AppCompatActivity(), BeaconConsumer {
 
     override fun onBeaconServiceConnect() {
         beaconManager.removeAllMonitorNotifiers()
-        beaconManager.addMonitorNotifier(
-            object : MonitorNotifier {
-                override fun didDetermineStateForRegion(state: Int, p1: Region?) {
-                    val text = "I have just switched from seeing/not seeing beacons: " + state
-                    Log.i(TAG, text)
-                    somethingHappens.text = text
-                }
 
-                override fun didEnterRegion(region: Region?) {
-                    val text = "I just saw an beacon for the first time !"
-                    Log.i(TAG, text)
-                    somethingHappens.text = text
-                }
+        beaconManager.addRangeNotifier(
+            object : RangeNotifier {
+                override fun didRangeBeaconsInRegion(
+                    beacons: Collection<Beacon>,
+                    region: Region?
+                ) {
+                    if (beacons.size > 0) {
 
-                override fun didExitRegion(region: Region?) {
-                    val text = "I no longer see an beacon"
-                    Log.i(TAG, text)
-                    somethingHappens.text = text
+                        val listItems = beacons.map {
+                            BeaconModel(it.id1.toString(), it.id3.toInt(), it.id2.toInt(), it.rssi)
+                        }
+
+                        val adapter = AdapterBeacon(listItems as ArrayList<BeaconModel>, applicationContext)
+
+                        listBeacons.adapter = adapter
+                    } else {
+                        listBeacons.adapter = AdapterBeacon(ArrayList(), applicationContext)
+                    }
                 }
             }
         )
+
+        try {
+            beaconManager.startRangingBeaconsInRegion(Region("myRangingUniqueId", null, null, null))
+        } catch (e: RemoteException) {
+        }
     }
 
 }

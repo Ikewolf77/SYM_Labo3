@@ -8,26 +8,19 @@
     tools:context=".Activity1"
     android:padding="20dp">
 
-    <TextView
-        android:id="@+id/title"
+    <Button
+        android:id="@+id/BACK_TO_ACTIVITES"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/back_to_activites"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/activity_2"
-        android:textStyle="bold"
-        android:textSize="40sp"
-        android:fontFamily="monospace"/>
+    />
 
-    <TextView
-        android:id="@+id/somethingHappens"
+    <ListView
+        android:id="@+id/LIST_BEACONS"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="72dp"
-        android:fontFamily="monospace"
-        android:text="@string/activity_2_title"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/title"
-        tools:layout_editor_absoluteX="24dp" />
+        tools:layout_editor_absoluteX="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
