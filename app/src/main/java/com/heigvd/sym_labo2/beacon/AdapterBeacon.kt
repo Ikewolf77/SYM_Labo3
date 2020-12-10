@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
-import com.moodboardapp.sym_labo2.R
+import com.heigvd.sym_labo2.R
 import org.w3c.dom.Text
 
 
@@ -28,6 +28,9 @@ class AdapterBeacon : ArrayAdapter<BeaconModel> {
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+
+        // Inspired by this tutorial : https://www.journaldev.com/10416/android-listview-with-custom-adapter-example-tutorial
+
         // Get the data item for this position
 
         // Get the data item for this position

@@ -13,10 +13,12 @@ import org.altbeacon.beacon.*
 
 
 class Activity2 : AppCompatActivity(), BeaconConsumer {
-    val TAG = "Activity2"
     private lateinit var beaconManager: BeaconManager
     private lateinit var listBeacons: ListView
     private lateinit var btnBackActivities: Button
+
+    // Documentation of Android beacon library
+    // https://altbeacon.github.io/android-beacon-library/samples.html
 
     /* iBeacon */
     override fun onCreate(savedInstanceState: Bundle?) {
