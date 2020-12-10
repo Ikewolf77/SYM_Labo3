@@ -3,8 +3,15 @@
     <string name="activity_1">Code-barres</string>
     <string name="activity_2">iBeacon</string>
     <string name="activity_3">NFC</string>
-    <string name="activity_1_title">Code-barres</string>
     <string name="activity_2_title">iBeacon</string>
     <string name="activity_3_title">NFC</string>
+
+    <string name="nfc_username">Username</string>
+    <string name="nfc_password">Password</string>
+    <string name="nfc_connect">Connect</string>
+    <string name="nfc_high">High Security</string>
+    <string name="nfc_medium">Medium Security</string>
+    <string name="nfc_low">Low Security</string>
+
     <string name="back_to_activites">Retour vers les activités</string>
 </resources>
