@@ -35,11 +35,11 @@ class Activity3 : AppCompatActivity() {
     private lateinit var lowSecurityButton: Button
     lateinit var countDownTimer: CountDownTimer
 
-    // Account Data
+    // Account Data (auto-filled when NFC near for simplicity)
     private var myUsername = "User"
     private var verySecretPassword = "s3cret"
 
-    // NFC First Login
+    // NFC adapter
     private lateinit var nfcAdapter: NfcAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,11 +100,10 @@ class Activity3 : AppCompatActivity() {
     private fun checkDatasetButton(button: Button, time: Int, currentSeconds: Long) {
         if(currentSeconds % time < 1L) {
             button.isEnabled = false
+            button.setText("[LOCKED]")
         } else {
             if(button.isEnabled) {
                 button.setText("(" + currentSeconds % time + ")")
-            } else {
-                button.setText("[LOCKED]")
             }
         }
     }
@@ -181,7 +180,7 @@ class Activity3 : AppCompatActivity() {
                     // Launch kotlin coroutine
                     runOnUiThread {
                         if(connectButton.isEnabled) {
-                            countDownTimer.start()
+                            refresh()
                         } else {
                             connectButton.isEnabled = true
                             connectButton.setText("Connect to: " + handleNfcTag(tag))
@@ -252,12 +251,20 @@ class Activity3 : AppCompatActivity() {
         )
     }
 
+    private fun refresh() {
+        highSecurityButton.isEnabled = true
+        medSecurityButton.isEnabled = true
+        lowSecurityButton.isEnabled = true
+        countDownTimer.start()
+    }
+
     private fun logout() {
         connectButton.isEnabled = false
+        connectButton.setText(R.string.nfc_connect)
         usernameInput.setText("")
         passwordInput.setText("")
         securityContainer.visibility = View.GONE
-        countDownTimer.start()
+        countDownTimer.cancel()
     }
 
     companion object {
