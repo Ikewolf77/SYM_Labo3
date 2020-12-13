@@ -13,4 +13,5 @@
     <string name="nfc_medium">Medium Security</string>
     <string name="nfc_low">Low Security</string>
 
+    <string name="back_to_activites">Retour vers les activités</string>
 </resources>
